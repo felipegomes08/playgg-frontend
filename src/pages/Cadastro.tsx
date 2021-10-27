@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import {
   Box,
   Button,
@@ -16,6 +16,7 @@ import { Logo } from './../components/Cadastro/Logo'
 import { SigupForm } from './../components/Cadastro/SigupForm'
 import { Testimonial } from './../components/Cadastro/Testimonial'
 export default function Cadastro (){
+  
     return(
         <Box minH="100vh" bg={{ md: mode('gray.100', 'inherit') }}>
       <Box maxW="6xl" mx="auto" py={{ base: '10', md: '20' }} px={{ base: '4', md: '10' }}>
