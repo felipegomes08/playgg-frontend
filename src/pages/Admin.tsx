@@ -2,19 +2,20 @@ import { Box, Stack, Td, Th, Tr,Thead, TableCaption, Table, Tbody, Tfoot, Button
 import React, {useState, useEffect} from 'react'
 
 export default function Admin(){
-  const [users, setUsers] = useState([]) 
+  const [users, setUsers] = useState<any>([]) 
 
   useEffect(() => {
     async function loadUsers() {
       //setIsLoadingItems(true)
       await fetch('http://localhost:5000/api/Users')
-        .then(res => {
+        .then((res:any) => {
           setUsers(res)
         })
         .catch(error => {
           console.log({ errorLoadItems: error })
         })
         .finally(() => {
+          console.log(users)
           //setIsLoadingItems(false)
         })
     }
