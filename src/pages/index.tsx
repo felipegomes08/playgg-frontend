@@ -11,7 +11,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import Logo from "./../assets/img/logo.png";
-export default function Home() {
+export default function Index() {
   const slides = [
     {
       img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
