@@ -40,13 +40,13 @@ export default function Campeonatos() {
     
 
 <iframe
-    src="https://player.twitch.tv/?channel=yoda&parent=localhost&muted=true"
+    src="https://player.twitch.tv/?channel=gaules&parent=localhost&muted=true"
     height="720"
     width="1280"
     allowfullscreen="true">
 </iframe>
 <iframe id="twitch-chat-embed"
-        src="https://www.twitch.tv/embed/yoda/chat?parent=localhost"
+        src="https://www.twitch.tv/embed/gaules/chat?parent=localhost"
         height="700"
         width="400">
 </iframe>
