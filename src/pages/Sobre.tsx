@@ -14,7 +14,7 @@ export default function Sobre() {
   return (
     <Flex width="100%" height="100%" direction="column" bg="#011627">
       <Flex w="100%" h="80px" justify="flex-end">
-        <Flex w="50%" h="100%" align="center" justify="left" pl="5">
+        <Flex w="50%" h="100%" align="center" justify="left" pl="20">
           <Image src= "https://i.ibb.co/0D9bSpD/logo.png"/>
         </Flex>
         <Flex
@@ -25,11 +25,11 @@ export default function Sobre() {
           w="50%"
           borderLeftRadius="10"
         >
-          <Link color="white">Home</Link>
-          <Link color="white">Sobre nós</Link>
-          <Link color="white">Campeonatos</Link>
-          <Button bg="purple" color="white">
-            Seja um organizador
+          <Link color="white" href="./">Home</Link>
+          <Link color="white" href="./Sobre">Sobre nós</Link>
+          <Link color="white" href="/Campeonatos">Campeonatos</Link>
+          <Button bg="purple" color="white" onClick={()=>{}}>
+            Seja um jogador
           </Button>
         </Flex>
       </Flex>
@@ -43,7 +43,7 @@ export default function Sobre() {
         <Text textAlign="justify" fontSize="21" fontWeight="bold" color="white">
           GGPLAY
         </Text>
-        <Text textAlign="justify" fontSize="90" fontWeight="bold" color="white">
+        <Text textAlign="justify" fontSize="60" fontWeight="bold" color="white">
           SOBRE NÓS
         </Text>
       </Flex>
@@ -65,7 +65,7 @@ export default function Sobre() {
             justify="flex-end"
             px="10%"
           >
-            <Text textAlign="justify" fontSize="40" color="white">
+            <Text textAlign="justify" fontSize="25" color="white">
               Nossa missão é mudar a vida de milhões de jovens e crianças e
               ensiná-las diversas habilidades importantes para o profissional do
               futuro, de maneira didática, sem enrolação e com muita diversão!
@@ -146,7 +146,7 @@ export default function Sobre() {
       </Flex>
 
       <Flex width="100%" bg="#011627" justify="center" pt="10px" >
-        <Stack  spacing="5" direction="row" p="2.5" justify="center" align="center" >
+        <Stack px="10" w="100%" spacing="3" direction="row" p="2.5" justify="center" align="center" >
           <Flex boxSize="sm" direction="column" justify="center" align="center"  >
             <Flex border="10px solid #3a07c8" >
             <iframe     

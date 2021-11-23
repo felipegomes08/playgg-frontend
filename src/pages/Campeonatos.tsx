@@ -9,9 +9,21 @@ import {
   Button,
   Stack,
   Link,
+  Input,
+  FormLabel,
+  ModalHeader,
+  ModalContent,
+  ModalOverlay,
+  Modal,
+  ModalFooter,
+  FormControl,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
 } from "@chakra-ui/react";
 import Logo from "./../assets/img/logo.png";
 export default function Campeonatos() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [campeonatos, setCampeonatos] = useState<any>([]);
 
   useEffect(() => {
@@ -40,8 +52,8 @@ export default function Campeonatos() {
   return (
     <Flex width="100%" height="100%" direction="column">
       <Flex w="100%" h="80px" justify="flex-end">
-        <Flex w="50%" h="100%" align="center" justify="left" pl="5">
-          <Image />
+        <Flex w="50%" h="100%" align="center" justify="left" pl="20">
+          <Image src="https://i.ibb.co/0D9bSpD/logo.png" />
         </Flex>
         <Flex
           justify="space-evenly"
@@ -51,11 +63,17 @@ export default function Campeonatos() {
           w="50%"
           borderLeftRadius="10"
         >
-          <Link color="white">Home</Link>
-          <Link color="white">Sobre nós</Link>
-          <Link color="white">Campeonatos</Link>
-          <Button bg="purple" color="white">
-            Seja um organizador
+          <Link color="white" href="./">
+            Home
+          </Link>
+          <Link color="white" href="./Sobre">
+            Sobre nós
+          </Link>
+          <Link color="white" href="/Campeonatos">
+            Campeonatos
+          </Link>
+          <Button bg="purple" color="white" onClick={() => {}}>
+            Seja um jogador
           </Button>
         </Flex>
       </Flex>
@@ -100,11 +118,12 @@ export default function Campeonatos() {
                 <Text fontSize="20" fontWeight="bold">
                   {item.game}
                 </Text>
-                <Stack w="100%" spacing="1">
+                <Stack w="100%" spacing="1" px="5">
                   <Text>Data: {item.data}</Text>
                   <Text>Local: {item.location}</Text>
                   <Text>Vagas: {item.numberOfTeams}</Text>
                 </Stack>
+                <Button colorScheme="blue" py="5" onClick={onOpen}>Inscreva-se</Button>
               </Box>
             </Flex>
           ))}
@@ -120,6 +139,34 @@ export default function Campeonatos() {
           <Image />
         </Flex>
       </Flex>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Inscrever time</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Nome do time</FormLabel>
+              <Input placeholder="Ex: MasterChef" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Número de players</FormLabel>
+              <Input placeholder="Máx. 6" />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3}>
+              Save
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 }

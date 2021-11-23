@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //import Copa from "./../assets/img/cup.png"//
 import {
   Flex,
@@ -12,6 +12,31 @@ import {
 } from "@chakra-ui/react";
 import Logo from "./../assets/img/logo.png";
 export default function Index() {
+  const [campeonatos, setCampeonatos] = useState<any>([]);
+
+  useEffect(() => {
+    async function loadChampions() {
+      // GET request using fetch with error handling
+      fetch("http://localhost:5000/api/Champions")
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          console.log(data);
+          setCampeonatos(data);
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+    }
+    loadChampions();
+  }, []);
+
   const slides = [
     {
       img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -51,8 +76,8 @@ export default function Index() {
   return (
     <Flex width="100%" height="100%" direction="column">
       <Flex w="100%" h="80px" justify="flex-end">
-        <Flex w="50%" h="100%" align="center" justify="left" pl="5">
-          <Image />
+        <Flex w="50%" h="100%" align="center" justify="left" pl="20">
+          <Image src= "https://i.ibb.co/0D9bSpD/logo.png"/>
         </Flex>
         <Flex
           justify="space-evenly"
@@ -62,11 +87,11 @@ export default function Index() {
           w="50%"
           borderLeftRadius="10"
         >
-          <Link color="white">Home</Link>
-          <Link color="white">Sobre nós</Link>
-          <Link color="white">Campeonatos</Link>
-          <Button bg="purple" color="white">
-            Seja um organizador
+          <Link color="white" href="./">Home</Link>
+          <Link color="white" href="./Sobre">Sobre nós</Link>
+          <Link color="white" href="/Campeonatos">Campeonatos</Link>
+          <Button bg="purple" color="white" onClick={()=>{}}>
+            Seja um jogador
           </Button>
         </Flex>
       </Flex>
@@ -80,11 +105,11 @@ export default function Index() {
           justify="flex-end"
           px="10%"
         >
-          <Text textAlign="justify" fontSize="72" fontWeight="bold">
+          <Text textAlign="justify" fontSize="62" fontWeight="bold">
             Em destaque
             <br /> na playGG
           </Text>
-          <Text textAlign="justify" fontSize="30">
+          <Text textAlign="justify" fontSize="20">
             O #Worlds2021, o grande Mundial de League of Legends, acontece do
             dia 5 de outubro até 6 de novembro, e você assiste AO VIVO nos
             canais oficiais do CBLOL – no YouTube, na Twitch e na Nimo TV. Não
@@ -101,9 +126,9 @@ export default function Index() {
           <iframe
             width="607"
             height="341"
-            src="https://www.youtube.com/embed/oJDRxXCgUB8"
+            src="https://www.youtube.com/embed/oJDRxXCgUB8?autoplay=1"
             title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow='autoplay'
           ></iframe>
         </Box>
       </Flex>
@@ -172,119 +197,34 @@ export default function Index() {
           </Text>
         </Box>
         <Flex width="100%" bg="#011627" justify="center" pt="10px">
-          <Stack spacing="5" direction="row">
-            <Flex boxSize="sm" direction="column">
-              <Image
-                height="180px"
-                src="https://gamerstream.com.br/wp-content/uploads/2021/10/5cf14011e05c1-1024x536.jpg"
-                alt="Segun Adebayo"
-              />
-              <Text mt="2" color="white" fontWeight="bold">
-                28 SET-05 OUT
-              </Text>
-              <Text my="2" color="white">
-                Qui, 07 Out · 14:00
-              </Text>
-              <Text my="2" color="white">
-                GAME CUP 2021
-              </Text>
-              <Text my="2" color="white">
-                oCeano – Patos de Minas, MG
-              </Text>
-              <Button
-                my="2"
-                alignSelf="center"
-                w="120px"
-                bg="blue"
-                color="white"
-              >
-                Saiba Mais
-              </Button>
-            </Flex>
-            <Flex boxSize="sm" direction="column">
-              <Image
-                height="180px"
-                src="https://gamerstream.com.br/wp-content/uploads/2021/10/IEM-Cologne-2021-1024x538.jpg"
-                alt="Segun Adebayo"
-              />
-              <Text mt="2" color="white" fontWeight="bold">
-                28 SET-10 OUT
-              </Text>
-              <Text my="2" color="white">
-                Ter, 12 Out · 14:00
-              </Text>
-              <Text my="2" color="white">
-                Cologne 2021 2021
-              </Text>
-              <Text my="2" color="white">
-                oCeano – Patos de Minas, MG
-              </Text>
-              <Button
-                my="2"
-                alignSelf="center"
-                w="120px"
-                bg="blue"
-                color="white"
-              >
-                Saiba Mais
-              </Button>
-            </Flex>
-            <Flex boxSize="sm" direction="column">
-              <Image
-                height="180px"
-                src="https://gamerstream.com.br/wp-content/uploads/2021/10/LCK-2021-logo-1024x576.png"
-                alt="Segun Adebayo"
-              />
-              <Text mt="2" color="white" fontWeight="bold">
-                28 SET-05 OUT
-              </Text>
-              <Text my="2" color="white">
-                Qui, 21 Out · 14:00
-              </Text>
-              <Text my="2" color="white">
-                LCK 2021 Spring
-              </Text>
-              <Text my="2" color="white">
-                oCeano – Patos de Minas, MG
-              </Text>
-              <Button
-                my="2"
-                alignSelf="center"
-                w="120px"
-                bg="blue"
-                color="white"
-              >
-                Saiba Mais
-              </Button>
-            </Flex>
-            <Flex boxSize="sm" direction="column">
-              <Image
-                height="180px"
-                src="https://gamerstream.com.br/wp-content/uploads/2021/10/copa-do-mundo-fortnite.jpg"
-                alt="Segun Adebayo"
-              />
-              <Text mt="2" color="white" fontWeight="bold">
-                28 SET-15 NOV
-              </Text>
-              <Text my="2" color="white">
-                Ter, 16 Nov · 14:00
-              </Text>
-              <Text my="2" color="white">
-                GAME CUP 2021
-              </Text>
-              <Text my="2" color="white">
-                oCeano – Patos de Minas, MG
-              </Text>
-              <Button
-                my="2"
-                alignSelf="center"
-                w="120px"
-                bg="blue"
-                color="white"
-              >
-                Saiba Mais
-              </Button>
-            </Flex>
+          <Stack w="100%" spacing="5" direction="row" flexWrap="wrap" justify="center" align="center">
+            {campeonatos.map((item, index) => (
+              <Flex bg="#00111f"  key={index} boxSize="sm" direction="column">
+                <Image
+                  height="180px"
+                  src="https://gamerstream.com.br/wp-content/uploads/2021/10/5cf14011e05c1-1024x536.jpg"
+                  alt="Segun Adebayo"
+                />
+                <Text mt="2" color="white" fontWeight="bold">
+                  {item.data}
+                </Text>
+                <Text my="2" color="white">
+                  {item.game}
+                </Text>
+                <Text my="2" color="white">
+                  {item.location}
+                </Text>
+                <Button
+                  my="2"
+                  alignSelf="center"
+                  w="120px"
+                  bg="blue"
+                  color="white"
+                >
+                  Saiba Mais
+                </Button>
+              </Flex>
+            ))}
           </Stack>
         </Flex>
       </Flex>
