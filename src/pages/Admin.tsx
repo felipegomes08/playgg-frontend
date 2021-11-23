@@ -18,7 +18,16 @@ import {
   ModalContent,
   Modal,
   useDisclosure,
-  Input
+  Input,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverArrow,
+  PopoverContent,
+  Portal,
+  PopoverTrigger,
+  Popover,
+  PopoverHeader,
+  useToast
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import Campeonatos from "./Campeonatos";
@@ -29,8 +38,8 @@ export default function Admin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [id, setId] = useState(0);
-  
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     async function loadUsers() {
@@ -55,28 +64,40 @@ export default function Admin() {
     loadUsers();
   }, []);
 
-  async function updateUser(){
-      if(nome != "" && email != ""){
-        const req = await fetch('http://localhost:5000/api/Users/${id}', {
-          method: 'PUT', 
-          headers: {'Content-Type': 'application/json'},
-                   body: JSON.stringify({
-                     id,
-                     nome,
-                     email, 
-                     senha
-                   })
-        });
-        const json = await req.json();
-        alert("Sucesso ao enviar informações!!");
-      } else {
-        alert("Preencha todos os campos corretamente");
-      }
-    
+  async function updateUser() {
+    if (nome != "" && email != "") {
+      const req = await fetch("http://localhost:5000/api/Users/"+id, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json',
+        'Accept': 'application/json' },
+        body: JSON.stringify({
+          id,
+          nome,
+          email,
+          senha,
+        }),
+      });
+      const json = await req.json();
+      toast({
+        title: "Sucesso ao editar usuário",
+        status: "success",
+        isClosable: true,
+      })
+    } else {
+      toast({
+        title: "Erro ao editar usuário",
+        status: "error",
+        isClosable: true,
+      })
+    }
   }
-  function handleDelete(){
-    console.log(id)
-    fetch("http://localhost:5000/api/Users/${id}", { method: "DELETE" })
+  function handleDelete() {
+    try {
+      fetch("http://localhost:5000/api/Users/"+id, { method: "DELETE"});
+    } catch (error) {
+      console.log(error);
+    }finally{
+    }
   }
   return (
     <Box p="10">
@@ -93,10 +114,49 @@ export default function Admin() {
               <Td>{users.nome}</Td>
               <Td>{users.email}</Td>
               <Td>
-                <Button bg="#2E2E2E" mr="5" onClick={handleDelete} onMouseMove={()=>{setNome(users.nome); setEmail(users.email); setSenha(users.senha); setId(users.id)}} >
-                  Deletar
+                <Popover>
+                  <PopoverTrigger>
+                    <Button
+                      bg="#2E2E2E"
+                      mr="5"
+                      onMouseMove={() => {
+                        setNome(users.nome);
+                        setEmail(users.email);
+                        setSenha(users.senha);
+                        setId(users.id);
+                      }}
+                    >
+                      Deletar
+                    </Button>
+                  </PopoverTrigger>
+                  <Portal>
+                    <PopoverContent>
+                      <PopoverArrow />
+                      <PopoverCloseButton />
+                      <PopoverHeader>
+                        Esta ação é irreverssível, tem certeza que deseja deletar
+                        este usuário?
+                      </PopoverHeader>
+                      <PopoverBody>
+                        <Button colorScheme="red" onClick={handleDelete}>
+                          Confirmar
+                        </Button>
+                      </PopoverBody>
+                    </PopoverContent>
+                  </Portal>
+                </Popover>
+                <Button
+                  bg="#2E2E2E"
+                  onMouseMove={() => {
+                    setNome(users.nome);
+                    setEmail(users.email);
+                    setSenha(users.senha);
+                    setId(users.id);
+                  }}
+                  onClick={onOpen}
+                >
+                  Editar
                 </Button>
-                <Button bg="#2E2E2E" onMouseMove={()=>{setNome(users.nome); setEmail(users.email); setSenha(users.senha); setId(users.id)}} onClick={onOpen}>Editar</Button>
               </Td>
             </Tr>
           ))}
@@ -108,16 +168,28 @@ export default function Admin() {
           <ModalHeader>Editar usuário</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Input onChange={e=>{setId(e.target.valueAsNumber)}} mb="5"/>
-            <Input placeholder={nome} onChange={e=>{setNome(e.target.value)}} mb="5"/>
-            <Input placeholder={email} onChange={e=>{setEmail(e.target.value)}} />
+            <Input
+              placeholder={nome}
+              onChange={(e) => {
+                setNome(e.target.value);
+              }}
+              mb="5"
+            />
+            <Input
+              placeholder={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={updateUser} >
+            <Button colorScheme="blue" mr={3} onClick={updateUser}>
               Salvar
             </Button>
-            <Button colorScheme="red" onClick={onClose}>Cacelar</Button>
+            <Button colorScheme="red" onClick={onClose}>
+              Cancelar
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
