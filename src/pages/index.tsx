@@ -39,19 +39,19 @@ export default function Index() {
 
   const slides = [
     {
-      img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: "https://support-leagueoflegends.riotgames.com/hc/article_attachments/4402976855699/Multiple_Sentinels_Splash.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
-      img: "https://s2.glbimg.com/VoXILhGLU6mIST_g8RkPhvEv7Iw=/0x0:1280x720/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2019/x/p/byvgKJTtymBdyJwS09uA/league-newlogo-banner.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    {
-      img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: "https://s2.glbimg.com/rPy7A1d3xGNXhEBkFeymDy45rl4=/0x0:1920x1080/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2019/s/W/rPsLN6SyAp4q7AcIBYTQ/1541419312747-tr-2-wallpaper.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
       img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
-      img: "https://uploads.jovemnerd.com.br/wp-content/uploads/2020/12/valorant-ep1-ato3-publi.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/social/hoodwink.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    {
+      img: "https://s2.glbimg.com/s6t4nWk32AxxarrPDAhXB_VxRYs=/0x0:2560x1440/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2017/7/h/4Hj5ZbRK2xsfpavGhW7Q/playerunknowns-battleground-fps.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
   ];
 
