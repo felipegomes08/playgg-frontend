@@ -1,10 +1,10 @@
 {
   "name": "myapp",
-    "description": "a really cool app",
-    "version": "1.0.0",
-    "engines": {
-      "node": "6.14.15"
-    },
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "6.14.15"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -29,5 +29,5 @@
     "eslint": "8.0.1",
     "eslint-config-next": "11.1.2",
     "typescript": "^4.4.4"
-  }    
+  }
 }

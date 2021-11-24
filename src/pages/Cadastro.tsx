@@ -18,16 +18,16 @@ import { Testimonial } from './../components/Cadastro/Testimonial'
 export default function Cadastro (){
   
     return(
-        <Box minH="100vh" bg={{ md: mode('gray.100', 'inherit') }}>
+        <Box minH="100vh" bg="black">
       <Box maxW="6xl" mx="auto" py={{ base: '10', md: '20' }} px={{ base: '4', md: '10' }}>
         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing="14">
           <Box w="full" maxW="xl" mx="auto">
             <Box
-              bg={{ md: mode('white', 'gray.700') }}
+              bg="#011627"
               rounded={{ md: '2xl' }}
               p={{ base: '4', md: '12' }}
-              borderWidth={{ md: '1px' }}
-              borderColor={mode('gray.200', 'transparent')}
+              border= "none"
+              
               shadow={{ md: 'lg' }}
             >
               {/* <Logo
@@ -40,7 +40,7 @@ export default function Cadastro (){
                 <Heading size="lg" mb="2" fontWeight="extrabold">
                   Bem vindo ao PlayGG
                 </Heading>
-                <Text fontSize="lg" color={mode('gray.600', 'gray.400')} fontWeight="medium">
+                <Text fontSize="lg" color="#ccc9c9" fontWeight="medium">
                   Entre e dê start em seus camps
                 </Text>
               </Box>
