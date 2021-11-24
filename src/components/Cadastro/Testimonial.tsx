@@ -25,7 +25,7 @@ export function Testimonial() {
             <Text as="cite" fontStyle="normal" fontWeight="medium">
               Wilson Junior
             </Text>
-            <Text color={mode('gray.600', 'gray.400')}>FullStack, Developement @ Patos de Minas</Text>
+            <Text color="#ccc9c9">FullStack, Developement @ Patos de Minas</Text>
           </Box>
         </HStack>
       </Box>
