@@ -60,8 +60,8 @@ export default function details() {
           </Button>
         </Flex>
       </Flex>
-      <Flex width="100%" height="100vh" justify="center" align="center">
-      <iframe width="1280" height="720" src="https://www.youtube.com/embed/1291iKRc5Ho" 
+      <Flex mt="10" width="80%" height="100%" justify="center" align="center" justifySelf="center" alignSelf="center">
+      <iframe width="1280" height="560" src="https://www.youtube.com/embed/1291iKRc5Ho" 
       title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; 
       clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
        
@@ -85,14 +85,14 @@ export default function details() {
           Resultados
         </Text>
       </Flex>
-      <Table variant="striped"  color="#25067c" colorScheme="cyan">
+      <Table color="#ccc9c9">
   <Thead>
     <Tr>
       <Th>Posição</Th>
       <Th>Time</Th>
       <Th isNumeric>Pontos</Th>
       <Th isNumeric>V</Th>
-      <Th isNumericn>D</Th>
+      <Th isNumeric>D</Th>
     </Tr>
   </Thead>
   <Tbody>

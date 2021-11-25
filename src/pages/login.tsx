@@ -26,7 +26,7 @@ export default function Login(){
     <Box maxW="md" mx="auto">
       {/* <Logo mx="auto" h="8" mb={{ base: '10', md: '20' }} /> */}
       <Heading textAlign="center" size="xl" fontWeight="extrabold">
-        Entre com sua conta de Organizador
+        Entre com sua conta
       </Heading>
       <Text mt="4" mb="8" align="center" maxW="md" fontWeight="medium">
         <Text as="span">Não possui uma conta?</Text>
@@ -34,7 +34,7 @@ export default function Login(){
       </Text>
       <Card>
         <LoginForm />
-        <DividerWithText mt="6">ou faça login com</DividerWithText>
+        {/* <DividerWithText mt="6">ou faça login com</DividerWithText>
         <SimpleGrid mt="6" columns={3} spacing="3">
           <Button color="currentColor" variant="outline">
             <VisuallyHidden>Login with Facebook</VisuallyHidden>
@@ -48,7 +48,7 @@ export default function Login(){
             <VisuallyHidden>Login with Github</VisuallyHidden>
             <FaGithub />
           </Button>
-        </SimpleGrid>
+        </SimpleGrid> */}
       </Card>
     </Box>
   </Box>

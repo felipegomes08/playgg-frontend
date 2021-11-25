@@ -77,7 +77,7 @@ export default function Index() {
     <Flex width="100%" height="100%" direction="column">
       <Flex w="100%" h="80px" justify="flex-end">
         <Flex w="50%" h="100%" align="center" justify="left" pl="20">
-          <Image src= "https://i.ibb.co/0D9bSpD/logo.png"/>
+          <Image src="https://i.ibb.co/0D9bSpD/logo.png" />
         </Flex>
         <Flex
           justify="space-evenly"
@@ -87,9 +87,20 @@ export default function Index() {
           w="50%"
           borderLeftRadius="10"
         >
-          <Link color="white" href="./">Home</Link>
-          <Link color="white" href="./Sobre">Sobre nós</Link>
-          <Link color="white" href="/Campeonatos">Campeonatos</Link>
+          <Link color="white" href="./">
+            Home
+          </Link>
+          <Link color="white" href="./Sobre">
+            Sobre nós
+          </Link>
+          <Link color="white" href="/Campeonatos">
+            Campeonatos
+          </Link>
+          <Link href="/teams" textDecoration="none">
+            <Button bg="blue" color="white">
+              Monte sua equipe
+            </Button>
+          </Link>
           <Link href="/Cadastro" textDecoration="none">
             <Button bg="purple" color="white">
               Seja um jogador
@@ -130,7 +141,7 @@ export default function Index() {
             height="341"
             src="https://www.youtube.com/embed/oJDRxXCgUB8?autoplay=1"
             title="YouTube video player"
-            allow='autoplay'
+            allow="autoplay"
           ></iframe>
         </Box>
       </Flex>
@@ -199,15 +210,34 @@ export default function Index() {
           </Text>
         </Box>
         <Flex width="100%" bg="#011627" justify="center" py="10px">
-          <Stack w="100%" spacing="5" direction="row" flexWrap="wrap" justify="center" align="center">
+          <Stack
+            w="100%"
+            spacing="5"
+            direction="row"
+            flexWrap="wrap"
+            justify="center"
+            align="center"
+          >
             {campeonatos.map((item, index) => (
-              <Flex borderRadius="8" bg="#00111f"  key={index} boxSize="sm" direction="column">
+              <Flex
+                borderRadius="8"
+                bg="#00111f"
+                key={index}
+                boxSize="sm"
+                direction="column"
+              >
                 <Image
                   height="180px"
                   src="https://gamerstream.com.br/wp-content/uploads/2021/10/5cf14011e05c1-1024x536.jpg"
                   alt="Segun Adebayo"
                 />
-                <Text fontSize="20" mt="2" mx="5" color="white" fontWeight="bold">
+                <Text
+                  fontSize="20"
+                  mt="2"
+                  mx="5"
+                  color="white"
+                  fontWeight="bold"
+                >
                   {item.data}
                 </Text>
                 <Text fontSize="20" my="2" mx="5" color="white">
@@ -216,15 +246,11 @@ export default function Index() {
                 <Text fontSize="20" my="2" mx="5" color="white">
                   {item.location}
                 </Text>
-                <Button
-                  my="2"
-                  alignSelf="center"
-                  w="120px"
-                  bg="blue"
-                  color="white"
-                >
-                  Saiba Mais
-                </Button>
+                <Link href="/details" alignSelf="center">
+                  <Button my="2" w="120px" bg="blue" color="white">
+                    Saiba Mais
+                  </Button>
+                </Link>
               </Flex>
             ))}
           </Stack>

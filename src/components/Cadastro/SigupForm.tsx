@@ -111,9 +111,9 @@ export const SigupForm = () => {
             onChange={(e) => setEquipePertencente(e.target.value)}
             placeholder="Selecione sua equipe"
           >
-            {equipes.map((equipes, index) => (
-              <option key={index} value="Equipe1">
-                {equipes.equipePertencente}
+            {equipes.map((item, index) => (
+              <option key={index} value={item.nomeEquipe}>
+                {item.nomeEquipe}
               </option>
             ))}
           </Select>
