@@ -15,7 +15,7 @@ export default function Sobre() {
     <Flex width="100%" height="100%" direction="column" bg="#011627">
       <Flex w="100%" h="80px" justify="flex-end">
         <Flex w="50%" h="100%" align="center" justify="left" pl="20">
-          <Image src= "https://i.ibb.co/0D9bSpD/logo.png"/>
+          <Image src="https://i.ibb.co/0D9bSpD/logo.png" />
         </Flex>
         <Flex
           justify="space-evenly"
@@ -25,12 +25,20 @@ export default function Sobre() {
           w="50%"
           borderLeftRadius="10"
         >
-          <Link color="white" href="./">Home</Link>
-          <Link color="white" href="./Sobre">Sobre nós</Link>
-          <Link color="white" href="/Campeonatos">Campeonatos</Link>
-          <Button bg="purple" color="white" onClick={()=>{}}>
-            Seja um jogador
-          </Button>
+          <Link color="white" href="./">
+            Home
+          </Link>
+          <Link color="white" href="./Sobre">
+            Sobre nós
+          </Link>
+          <Link color="white" href="/Campeonatos">
+            Campeonatos
+          </Link>
+          <Link href="/Cadastro" textDecoration="none">
+            <Button bg="purple" color="white">
+              Seja um jogador
+            </Button>
+          </Link>
         </Flex>
       </Flex>
       <Flex
@@ -88,15 +96,20 @@ export default function Sobre() {
       <Flex width="100%" bg="#011627" justify="center" pt="10px">
         <Stack bg="black" spacing="5" direction="row" p="2.5">
           <Flex boxSize="sm" direction="column" position="relative">
-            <Flex
-              position="absolute"
-              width="100%"
-              height="100%"
-              bg="#240d8dc9"
-            >
-            <Stack direction="column" justify="flex-end" align="center" width="100%" pb="20"> 
-              <Text fontSize="14" fontWeight="bold" color="white">ITALLO ANDRADE</Text>
-              <Text fontSize="14"as="i" color="white">DESENVOLVEDOR FULLSTACK</Text>
+            <Flex position="absolute" width="100%" height="100%" bg="#240d8dc9">
+              <Stack
+                direction="column"
+                justify="flex-end"
+                align="center"
+                width="100%"
+                pb="20"
+              >
+                <Text fontSize="14" fontWeight="bold" color="white">
+                  ITALLO ANDRADE
+                </Text>
+                <Text fontSize="14" as="i" color="white">
+                  DESENVOLVEDOR FULLSTACK
+                </Text>
               </Stack>
             </Flex>
             <Image
@@ -106,15 +119,20 @@ export default function Sobre() {
             />
           </Flex>
           <Flex boxSize="sm" direction="column" position="relative">
-            <Flex
-              position="absolute"
-              width="100%"
-              height="100%"
-              bg="#240d8dc9"
-            >
-               <Stack direction="column" justify="flex-end" align="center" width="100%" pb="20"> 
-              <Text fontSize="14" fontWeight="bold" color="white">FELIPE GOMES</Text>
-              <Text fontSize="14" as="i" color="white">DESENVOLVEDOR FULLSTACK</Text>
+            <Flex position="absolute" width="100%" height="100%" bg="#240d8dc9">
+              <Stack
+                direction="column"
+                justify="flex-end"
+                align="center"
+                width="100%"
+                pb="20"
+              >
+                <Text fontSize="14" fontWeight="bold" color="white">
+                  FELIPE GOMES
+                </Text>
+                <Text fontSize="14" as="i" color="white">
+                  DESENVOLVEDOR FULLSTACK
+                </Text>
               </Stack>
             </Flex>
             <Image
@@ -124,15 +142,20 @@ export default function Sobre() {
             />
           </Flex>
           <Flex boxSize="sm" direction="column" position="relative">
-            <Flex
-              position="absolute"
-              width="100%"
-              height="100%"
-              bg="#240d8dc9"
-            >
-               <Stack direction="column" justify="flex-end" align="center" width="100%" pb="20"> 
-              <Text fontSize="14" fontWeight="bold" color="white">WILSON JUNIOR</Text>
-              <Text fontSize="14" as="i" color="white">DESENVOLVEDOR FULLSTACK</Text>
+            <Flex position="absolute" width="100%" height="100%" bg="#240d8dc9">
+              <Stack
+                direction="column"
+                justify="flex-end"
+                align="center"
+                width="100%"
+                pb="20"
+              >
+                <Text fontSize="14" fontWeight="bold" color="white">
+                  WILSON JUNIOR
+                </Text>
+                <Text fontSize="14" as="i" color="white">
+                  DESENVOLVEDOR FULLSTACK
+                </Text>
               </Stack>
             </Flex>
             <Image
@@ -145,52 +168,58 @@ export default function Sobre() {
         </Stack>
       </Flex>
 
-      <Flex width="100%" bg="#011627" justify="center" pt="10px" >
-        <Stack px="10" w="100%" spacing="3" direction="row" p="2.5" justify="center" align="center" >
-          <Flex boxSize="sm" direction="column" justify="center" align="center"  >
-            <Flex border="10px solid #3a07c8" >
-            <iframe     
-                      
-              width="335.25"
-              height="221.53"
-              src="https://www.youtube.com/embed/box4SFtGvA0"
-              title="YouTube video player" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+      <Flex width="100%" bg="#011627" justify="center" pt="10px">
+        <Stack
+          px="10"
+          w="100%"
+          spacing="3"
+          direction="row"
+          p="2.5"
+          justify="center"
+          align="center"
+        >
+          <Flex boxSize="sm" direction="column" justify="center" align="center">
+            <Flex border="10px solid #3a07c8">
+              <iframe
+                width="335.25"
+                height="221.53"
+                src="https://www.youtube.com/embed/box4SFtGvA0"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
             </Flex>
           </Flex>
           <Flex boxSize="sm" direction="column" justify="center" align="center">
-          
-          <Flex border="10px solid #3a07c8" >
-            <iframe
-              width="335.25"
-              height="221.53"
-              src="https://www.youtube.com/embed/5fMZEmO549c"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+            <Flex border="10px solid #3a07c8">
+              <iframe
+                width="335.25"
+                height="221.53"
+                src="https://www.youtube.com/embed/5fMZEmO549c"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
             </Flex>
           </Flex>
           <Flex boxSize="sm" direction="column" justify="center" align="center">
-          <Flex border="10px solid #3a07c8" >
-            <iframe
-              width="335.25"
-              height="221.53"
-              src="https://www.youtube.com/embed/62SoZQxJMQc"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+            <Flex border="10px solid #3a07c8">
+              <iframe
+                width="335.25"
+                height="221.53"
+                src="https://www.youtube.com/embed/62SoZQxJMQc"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
             </Flex>
           </Flex>
           <Flex boxSize="sm" direction="column" justify="center" align="center">
-          <Flex border="10px solid #3a07c8" >
-            <iframe
-              width="335.25"
-              height="221.53"
-              src="https://www.youtube.com/embed/tSqhhCewNww"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+            <Flex border="10px solid #3a07c8">
+              <iframe
+                width="335.25"
+                height="221.53"
+                src="https://www.youtube.com/embed/tSqhhCewNww"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              ></iframe>
             </Flex>
           </Flex>
         </Stack>

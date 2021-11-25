@@ -27,24 +27,25 @@ import {
   PopoverTrigger,
   Popover,
   PopoverHeader,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import Campeonatos from "./Campeonatos";
 
 export default function Admin() {
   const [users, setUsers] = useState<any>([]);
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const [nomeJogador, setNomeJogador] = useState("");
+  const [idade, setIdade] = useState("");
+  const [funcao, setFuncao] = useState("");
+  const [equipePertencente, setEquipePertencente] = useState("");
   const [id, setId] = useState(0);
-  const toast = useToast()
+  const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     async function loadUsers() {
       // GET request using fetch with error handling
-      fetch("http://localhost:5000/api/Users")
+      fetch("http://localhost:5000/api/Jogadores")
         .then(async (response) => {
           const data = await response.json();
 
@@ -65,16 +66,19 @@ export default function Admin() {
   }, []);
 
   async function updateUser() {
-    if (nome != "" && email != "") {
-      const req = await fetch("http://localhost:5000/api/Users/"+id, {
+    if (nomeJogador != "" && idade != "") {
+      const req = await fetch("http://localhost:5000/api/Jogadores/" + id, {
         method: "PUT",
-        headers: { 'Content-Type': 'application/json',
-        'Accept': 'application/json' },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           id,
-          nome,
-          email,
-          senha,
+          nomeJogador,
+          idade,
+          funcao,
+          equipePertencente,
         }),
       });
       const json = await req.json();
@@ -82,37 +86,46 @@ export default function Admin() {
         title: "Sucesso ao editar usuário",
         status: "success",
         isClosable: true,
-      })
+      });
     } else {
       toast({
         title: "Erro ao editar usuário",
         status: "error",
         isClosable: true,
-      })
+      });
     }
   }
   function handleDelete() {
-    try {
-      fetch("http://localhost:5000/api/Users/"+id, { method: "DELETE"});
-    } catch (error) {
-      console.log(error);
-    }finally{
-    }
+    fetch("http://localhost:5000/api/Jogadores/" + id, { method: "DELETE" })
+      .then(() => {
+        toast({
+          title: "Sucesso ao deletar usuário",
+          status: "success",
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: "Erro ao editar usuário",
+          status: "error",
+          isClosable: true,
+        });
+      });
   }
   return (
     <Box p="10">
       <Table>
         <Thead>
           <Tr>
-            <Th>Nome</Th>
-            <Th>Email</Th>
+            <Th>Nome do Jogador</Th>
+            <Th>Equipe</Th>
           </Tr>
         </Thead>
         <Tbody>
           {users.map((users, index) => (
             <Tr key={index}>
-              <Td>{users.nome}</Td>
-              <Td>{users.email}</Td>
+              <Td>{users.nomeJogador}</Td>
+              <Td>{users.equipePertencente}</Td>
               <Td>
                 <Popover>
                   <PopoverTrigger>
@@ -120,9 +133,10 @@ export default function Admin() {
                       bg="#2E2E2E"
                       mr="5"
                       onMouseMove={() => {
-                        setNome(users.nome);
-                        setEmail(users.email);
-                        setSenha(users.senha);
+                        setNomeJogador(users.nomeJogador);
+                        setIdade(users.idade);
+                        setFuncao(users.funcao);
+                        setEquipePertencente(users.equipePertencente);
                         setId(users.id);
                       }}
                     >
@@ -134,8 +148,8 @@ export default function Admin() {
                       <PopoverArrow />
                       <PopoverCloseButton />
                       <PopoverHeader>
-                        Esta ação é irreverssível, tem certeza que deseja deletar
-                        este usuário?
+                        Esta ação é irreverssível, tem certeza que deseja
+                        deletar este usuário?
                       </PopoverHeader>
                       <PopoverBody>
                         <Button colorScheme="red" onClick={handleDelete}>
@@ -148,9 +162,10 @@ export default function Admin() {
                 <Button
                   bg="#2E2E2E"
                   onMouseMove={() => {
-                    setNome(users.nome);
-                    setEmail(users.email);
-                    setSenha(users.senha);
+                    setNomeJogador(users.nomeJogador);
+                    setIdade(users.idade);
+                    setFuncao(users.funcao);
+                    setEquipePertencente(users.equipePertencente);
                     setId(users.id);
                   }}
                   onClick={onOpen}
@@ -169,16 +184,16 @@ export default function Admin() {
           <ModalCloseButton />
           <ModalBody>
             <Input
-              placeholder={nome}
+              placeholder={nomeJogador}
               onChange={(e) => {
-                setNome(e.target.value);
+                setNomeJogador(e.target.value);
               }}
               mb="5"
             />
             <Input
-              placeholder={email}
+              placeholder={equipePertencente}
               onChange={(e) => {
-                setEmail(e.target.value);
+                setEquipePertencente(e.target.value);
               }}
             />
           </ModalBody>

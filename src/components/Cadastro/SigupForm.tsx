@@ -6,68 +6,138 @@ import {
   FormLabel,
   Input,
   Stack,
+  useToast,
+  Select,
   useColorModeValue as mode,
-} from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { json } from 'stream/consumers';
+} from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { json } from "stream/consumers";
 
 export const SigupForm = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [nomeJogador, setNomeJogador] = useState("");
+  const [idade, setIdade] = useState(0);
+  const [funcao, setFuncao] = useState("");
+  const [equipePertencente, setEquipePertencente] = useState("");
+  const toast = useToast();
+
+  const [equipes, setEquipes] = useState([]);
+
+  useEffect(() => {
+    async function loadEquipes() {
+      // GET request using fetch with error handling
+      fetch("http://localhost:5000/api/Equipes")
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          console.log(data);
+          setEquipes(data);
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+    }
+    loadEquipes();
+  }, []);
 
   async function hadleSent() {
-    if(nome != "" && email != "" && senha != ""){
-      const req = await fetch('http://localhost:5000/api/Users', {
-        method: 'POST', 
-                 body: JSON.stringify({
-                   nome,
-                   email, 
-                   senha
-                 }),
-                 headers: {'Content-Type': 'application/json'}
-      });
-      const json = await req.json();
-      alert("Sucesso ao cadastrar!!");
+    if (nomeJogador != "" && funcao != "") {
+      const req = await fetch("http://localhost:5000/api/Jogadores", {
+        method: "POST",
+        body: JSON.stringify({
+          nomeJogador,
+          idade,
+          funcao,
+          equipePertencente,
+        }),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(() => {
+          toast({
+            title: "Sucesso ao cadastrar usuário",
+            status: "success",
+            isClosable: true,
+          });
+        })
+        .catch(() => {
+          toast({
+            title: "Erro ao cadastrar usuário",
+            status: "error",
+            isClosable: true,
+          });
+        });
     } else {
-      alert("Preencha todos os campos corretamente");
+      toast({
+        title: "Preencha todos os campos corretamente",
+        status: "error",
+        isClosable: true,
+      });
     }
   }
   return (
     <form
       onSubmit={(e) => {
-        e.preventDefault()
+        e.preventDefault();
         // your submit logic here
       }}
     >
       <Stack spacing="4">
         <FormControl id="name">
-          <FormLabel mb={1}>Nome</FormLabel>
-          <Input autoComplete="name" value={nome} onChange={e => setNome(e.target.value)}/>
+          <FormLabel mb={1}>NomeJogador</FormLabel>
+          <Input
+            autoComplete="name"
+            value={nomeJogador}
+            onChange={(e) => setNomeJogador(e.target.value)}
+          />
         </FormControl>
-        <FormControl id="email">
-          <FormLabel mb={1}>Email</FormLabel>
-          <Input autoComplete="name" value={email} onChange={e => setEmail(e.target.value)}/>
+        <FormControl id="idade">
+          <FormLabel mb={1}>Idade</FormLabel>
+          <Input
+            autoComplete="name"
+            value={idade}
+            type="number"
+            onChange={(e) => setIdade(e.target.valueAsNumber)}
+          />
+        </FormControl>
+        <FormControl id="equipe">
+          <FormLabel mb={1}>Equipe</FormLabel>
+          <Select
+            color="black"
+            onChange={(e) => setEquipePertencente(e.target.value)}
+            placeholder="Selecione sua equipe"
+          >
+            {equipes.map((equipes, index) => (
+              <option key={index} value="Equipe1">
+                {equipes.equipePertencente}
+              </option>
+            ))}
+          </Select>
         </FormControl>
         <FormControl>
           <Flex align="baseline" justify="space-between">
-            <FormLabel mb={1}>Senha</FormLabel>
-            <Box
-              as="a"
-              href="#"
-              fontWeight="semibold"
-              fontSize="sm"
-              color={mode('blue.600', 'blue.200')}
-            >
-              Esqueceu a senha?
-            </Box>
+            <FormLabel mb={1}>Função</FormLabel>
           </Flex>
-          <Input type="password" autoComplete="current-password"  value={senha} onChange={e => setSenha(e.target.value)}/>
+          <Input
+            type="text"
+            value={funcao}
+            onChange={(e) => setFuncao(e.target.value)}
+          />
         </FormControl>
-        <Button type="submit" colorScheme="blue" size="lg" fontSize="md" onClick={hadleSent}> 
+        <Button
+          type="submit"
+          colorScheme="blue"
+          size="lg"
+          fontSize="md"
+          onClick={hadleSent}
+        >
           Criar conta
         </Button>
       </Stack>
     </form>
-  )
-}
+  );
+};
