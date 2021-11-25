@@ -84,18 +84,17 @@ export default function Campeonatos() {
           </Link>
         </Flex>
       </Flex>
-      <Flex width="100%" height="100vh" justify="center" align="center">
+      <Flex width="80%" height="100vh" justify="center" align="center" justifySelf="center" alignSelf="center">
         <iframe
           src="https://player.twitch.tv/?channel=yoda&parent=localhost&muted=true"
-          height="720"
-          width="1280"
+          width="1280" height="560"
           allowFullScreen={true}
         ></iframe>
         <iframe
           id="twitch-chat-embed"
           src="https://www.twitch.tv/embed/yoda/chat?parent=localhost"
-          height="700"
-          width="400"
+          height="560"
+          width="560"
         ></iframe>
       </Flex>
 

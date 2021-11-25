@@ -246,15 +246,11 @@ export default function Index() {
                 <Text fontSize="20" my="2" mx="5" color="white">
                   {item.location}
                 </Text>
-                <Button
-                  my="2"
-                  alignSelf="center"
-                  w="120px"
-                  bg="blue"
-                  color="white"
-                >
-                  Saiba Mais
-                </Button>
+                <Link href="/details" alignSelf="center">
+                  <Button my="2" w="120px" bg="blue" color="white">
+                    Saiba Mais
+                  </Button>
+                </Link>
               </Flex>
             ))}
           </Stack>

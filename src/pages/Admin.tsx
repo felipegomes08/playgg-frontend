@@ -44,31 +44,31 @@ export default function Admin() {
   const [id, setId] = useState(0);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [equipes, setEquipes] = useState([]);
+
+  async function loadUsers() {
+    // GET request using fetch with error handling
+    fetch("http://localhost:5000/api/Jogadores")
+      .then(async (response) => {
+        const data = await response.json();
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response statusText
+          const error = (data && data.message) || response.statusText;
+          return Promise.reject(error);
+        }
+        console.log(data);
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+  }
 
   useEffect(() => {
-    async function loadUsers() {
-      // GET request using fetch with error handling
-      fetch("http://localhost:5000/api/Jogadores")
-        .then(async (response) => {
-          const data = await response.json();
-
-          // check for error response
-          if (!response.ok) {
-            // get error message from body or default to response statusText
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-          }
-          console.log(data);
-          setUsers(data);
-        })
-        .catch((error) => {
-          console.error("There was an error!", error);
-        });
-    }
     loadUsers();
   }, []);
-
-  const [equipes, setEquipes] = useState([]);
 
   useEffect(() => {
     async function loadEquipes() {
@@ -108,8 +108,11 @@ export default function Admin() {
           funcao,
           equipePertencente,
         }),
+      }).then((res) => {
+        loadUsers();
+        onClose();
       });
-      const json = await req.json();
+
       toast({
         title: "Sucesso ao editar usuário",
         status: "success",
@@ -123,9 +126,12 @@ export default function Admin() {
       });
     }
   }
+
   function handleDelete() {
     fetch("http://localhost:5000/api/Jogadores/" + id, { method: "DELETE" })
       .then(() => {
+        loadUsers();
+
         toast({
           title: "Sucesso ao deletar usuário",
           status: "success",
@@ -140,6 +146,7 @@ export default function Admin() {
         });
       });
   }
+
   return (
     <Box p="10">
       <Text fontSize="25">Jogadores</Text>
@@ -217,10 +224,17 @@ export default function Admin() {
             h="250px"
             bg="#011627"
             flexDir="column"
-            justify="center"
+            justify="flex-start"
             align="center"
+            mx="30"
+            borderRadius="8"
           >
-            <Image w="100%" objectFit="contain" src={equipe.logoEquipe} />
+            <Image
+              w="200px"
+              h="200px"
+              objectFit="cover"
+              src={equipe.logoEquipe}
+            />
             <Text fontSize="25">{equipe.nomeEquipe}</Text>
           </Flex>
         ))}
