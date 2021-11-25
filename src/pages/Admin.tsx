@@ -28,6 +28,9 @@ import {
   Popover,
   PopoverHeader,
   useToast,
+  Text,
+  Flex,
+  Image,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import Campeonatos from "./Campeonatos";
@@ -63,6 +66,31 @@ export default function Admin() {
         });
     }
     loadUsers();
+  }, []);
+
+  const [equipes, setEquipes] = useState([]);
+
+  useEffect(() => {
+    async function loadEquipes() {
+      // GET request using fetch with error handling
+      fetch("http://localhost:5000/api/Equipes")
+        .then(async (response) => {
+          const data = await response.json();
+
+          // check for error response
+          if (!response.ok) {
+            // get error message from body or default to response statusText
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+          }
+          console.log(data);
+          setEquipes(data);
+        })
+        .catch((error) => {
+          console.error("There was an error!", error);
+        });
+    }
+    loadEquipes();
   }, []);
 
   async function updateUser() {
@@ -114,6 +142,7 @@ export default function Admin() {
   }
   return (
     <Box p="10">
+      <Text fontSize="25">Jogadores</Text>
       <Table>
         <Thead>
           <Tr>
@@ -177,6 +206,25 @@ export default function Admin() {
           ))}
         </Tbody>
       </Table>
+      <Text mt="10" fontSize="25">
+        Equipes
+      </Text>
+      <Flex w="100%" flexWrap="wrap" px="50">
+        {equipes.map((equipe, index) => (
+          <Flex
+            key={index}
+            w="200px"
+            h="250px"
+            bg="#011627"
+            flexDir="column"
+            justify="center"
+            align="center"
+          >
+            <Image w="100%" objectFit="contain" src={equipe.logoEquipe} />
+            <Text fontSize="25">{equipe.nomeEquipe}</Text>
+          </Flex>
+        ))}
+      </Flex>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="black">

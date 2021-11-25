@@ -6,6 +6,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { Card } from "../components/Teams/Card";
@@ -15,15 +16,9 @@ import { Logo } from "../components/Teams/Logo";
 
 export default function Teams() {
   return (
-    <Box
-      as="section"
-      bgGradient={{ md: "linear(to-r, blue.600, purple.600)" }}
-      py="20"
-      h="100vh"
-    >
+    <Box as="section" bgGradient="black" py="20" h="100vh">
       <Card maxW="2xl" mx="auto" textAlign="center">
         <Stack maxW="xs" mx="auto" spacing="8">
-          <Logo />
           <Stack spacing="3">
             <Heading as="h1" letterSpacing="tight">
               Cadastre sua equipe
@@ -35,7 +30,7 @@ export default function Teams() {
               Junte a galera e venha competir
             </Text>
           </Stack>
-          <EmailLoginForm onSubmit={(e) => e.preventDefault()} />
+          <EmailLoginForm />
         </Stack>
         <Text
           mt="16"

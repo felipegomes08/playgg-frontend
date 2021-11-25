@@ -72,6 +72,11 @@ export default function Campeonatos() {
           <Link color="white" href="/Campeonatos">
             Campeonatos
           </Link>
+          <Link href="/teams" textDecoration="none">
+            <Button bg="blue" color="white">
+              Monte sua equipe
+            </Button>
+          </Link>
           <Link href="/Cadastro" textDecoration="none">
             <Button bg="purple" color="white">
               Seja um jogador

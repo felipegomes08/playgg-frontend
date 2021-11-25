@@ -85,14 +85,14 @@ export default function details() {
           Resultados
         </Text>
       </Flex>
-      <Table variant="striped"  color="#25067c" colorScheme="cyan">
+      <Table color="#ccc9c9">
   <Thead>
     <Tr>
       <Th>Posição</Th>
       <Th>Time</Th>
       <Th isNumeric>Pontos</Th>
       <Th isNumeric>V</Th>
-      <Th isNumericn>D</Th>
+      <Th isNumeric>D</Th>
     </Tr>
   </Thead>
   <Tbody>
