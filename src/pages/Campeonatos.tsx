@@ -72,9 +72,11 @@ export default function Campeonatos() {
           <Link color="white" href="/Campeonatos">
             Campeonatos
           </Link>
-          <Button bg="purple" color="white" onClick={() => {}}>
-            Seja um jogador
-          </Button>
+          <Link href="/Cadastro" textDecoration="none">
+            <Button bg="purple" color="white">
+              Seja um jogador
+            </Button>
+          </Link>
         </Flex>
       </Flex>
       <Flex width="100%" height="100vh" justify="center" align="center">
@@ -112,7 +114,7 @@ export default function Campeonatos() {
                   objectFit="cover"
                   h="60%"
                   w="100%"
-                  src="https://image.api.playstation.com/vulcan/img/rnd/202109/1303/kaXldqXxbIyvX9Kn8eeFckQJ.png?"
+                  src={item.logoDoCampeonato}
                   alt=""
                 />
                 <Text fontSize="20" fontWeight="bold">

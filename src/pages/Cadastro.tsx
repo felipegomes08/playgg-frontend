@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -8,27 +8,30 @@ import {
   Stack,
   Text,
   useColorModeValue as mode,
-} from '@chakra-ui/react'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
-import * as Logos from '../components/Cadastro/Brands'
-import { DividerWithText } from './../components/Cadastro/DividerWithText'
-import { Logo } from './../components/Cadastro/Logo'
-import { SigupForm } from './../components/Cadastro/SigupForm'
-import { Testimonial } from './../components/Cadastro/Testimonial'
-export default function Cadastro (){
-  
-    return(
-        <Box minH="100vh" bg="black">
-      <Box maxW="6xl" mx="auto" py={{ base: '10', md: '20' }} px={{ base: '4', md: '10' }}>
+} from "@chakra-ui/react";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
+import * as Logos from "../components/Cadastro/Brands";
+import { DividerWithText } from "./../components/Cadastro/DividerWithText";
+import { Logo } from "./../components/Cadastro/Logo";
+import { SigupForm } from "./../components/Cadastro/SigupForm";
+import { Testimonial } from "./../components/Cadastro/Testimonial";
+export default function Cadastro() {
+  return (
+    <Box minH="100vh" bg="black">
+      <Box
+        maxW="6xl"
+        mx="auto"
+        py={{ base: "10", md: "20" }}
+        px={{ base: "4", md: "10" }}
+      >
         <SimpleGrid columns={{ base: 1, lg: 2 }} spacing="14">
           <Box w="full" maxW="xl" mx="auto">
             <Box
               bg="#011627"
-              rounded={{ md: '2xl' }}
-              p={{ base: '4', md: '12' }}
-              border= "none"
-              
-              shadow={{ md: 'lg' }}
+              rounded={{ md: "2xl" }}
+              p={{ base: "4", md: "12" }}
+              border="none"
+              shadow={{ md: "lg" }}
             >
               {/* <Logo
                 h="6"
@@ -36,7 +39,7 @@ export default function Cadastro (){
                 iconColor="blue.600"
                 mx={{ base: 'auto', md: 'unset' }}
               /> */}
-              <Box mb="8" textAlign={{ base: 'center', md: 'start' }}>
+              <Box mb="8" textAlign={{ base: "center", md: "start" }}>
                 <Heading size="lg" mb="2" fontWeight="extrabold">
                   Bem vindo ao PlayGG
                 </Heading>
@@ -59,21 +62,13 @@ export default function Cadastro (){
               <DividerWithText>or</DividerWithText> */}
               <SigupForm />
             </Box>
-
-            <Text mt="8" align="center" fontWeight="medium">
-              Já possui uma conta?{' '}
-              <Box
-                as="a"
-                href="./Login"
-                color={mode('blue.600', 'blue.200')}
-                display={{ base: 'block', md: 'inline-block' }}
-              >
-                Login em PlayGG
-              </Box>
-            </Text>
           </Box>
 
-          <Flex direction="column" py="24" display={{ base: 'none', lg: 'flex' }}>
+          <Flex
+            direction="column"
+            py="24"
+            display={{ base: "none", lg: "flex" }}
+          >
             <Testimonial />
             <SimpleGrid
               columns={3}
@@ -90,5 +85,5 @@ export default function Cadastro (){
         </SimpleGrid>
       </Box>
     </Box>
-    )
+  );
 }

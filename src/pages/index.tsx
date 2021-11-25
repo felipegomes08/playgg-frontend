@@ -90,9 +90,11 @@ export default function Index() {
           <Link color="white" href="./">Home</Link>
           <Link color="white" href="./Sobre">Sobre nós</Link>
           <Link color="white" href="/Campeonatos">Campeonatos</Link>
-          <Button bg="purple" color="white" onClick={()=>{}}>
-            Seja um jogador
-          </Button>
+          <Link href="/Cadastro" textDecoration="none">
+            <Button bg="purple" color="white">
+              Seja um jogador
+            </Button>
+          </Link>
         </Flex>
       </Flex>
       <Flex width="100%" height="100vh" align="center">
@@ -196,22 +198,22 @@ export default function Index() {
             Campeonatos próximos a você:
           </Text>
         </Box>
-        <Flex width="100%" bg="#011627" justify="center" pt="10px">
+        <Flex width="100%" bg="#011627" justify="center" py="10px">
           <Stack w="100%" spacing="5" direction="row" flexWrap="wrap" justify="center" align="center">
             {campeonatos.map((item, index) => (
-              <Flex bg="#00111f"  key={index} boxSize="sm" direction="column">
+              <Flex borderRadius="8" bg="#00111f"  key={index} boxSize="sm" direction="column">
                 <Image
                   height="180px"
                   src="https://gamerstream.com.br/wp-content/uploads/2021/10/5cf14011e05c1-1024x536.jpg"
                   alt="Segun Adebayo"
                 />
-                <Text mt="2" color="white" fontWeight="bold">
+                <Text fontSize="20" mt="2" mx="5" color="white" fontWeight="bold">
                   {item.data}
                 </Text>
-                <Text my="2" color="white">
+                <Text fontSize="20" my="2" mx="5" color="white">
                   {item.game}
                 </Text>
-                <Text my="2" color="white">
+                <Text fontSize="20" my="2" mx="5" color="white">
                   {item.location}
                 </Text>
                 <Button
