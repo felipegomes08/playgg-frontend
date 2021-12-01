@@ -10,34 +10,36 @@ import {
 } from "@chakra-ui/react";
 import * as React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { PasswordField } from "./PasswordField";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const toast = useToast();
+  const history = useHistory();
 
-function handleLogin(){
-  if(email != "" && senha != ""){
-    if(email == "admin@gmail.com"){
-
-    }else if(email == "wilson@gmail.com"){
-
-    }else{
+  function handleLogin() {
+    if (email != "" && senha != "") {
+      if (email == "admin@gmail.com") {
+        history.push("/Admin");
+      } else if (email == "wilson@gmail.com") {
+        history.push("/");
+      } else {
+        toast({
+          title: "Email ou senha inválidos!",
+          status: "error",
+          isClosable: true,
+        });
+      }
+    } else {
       toast({
-        title: "Email ou senha inválidos!",
+        title: "Preencha todos os campos!",
         status: "error",
         isClosable: true,
       });
     }
-  }else{
-    toast({
-      title: "Preencha todos os campos!",
-      status: "error",
-      isClosable: true,
-    });
   }
-}
 
   return (
     <chakra.form
@@ -60,12 +62,18 @@ function handleLogin(){
           <FormLabel>Senha</FormLabel>
           <Input
             name="senha"
-            type="senha"
+            type="password"
             required
             onChange={(e) => setSenha(e.target.value)}
           />
         </FormControl>
-        <Button onClick={handleLogin} type="submit" colorScheme="blue" size="lg" fontSize="md">
+        <Button
+          onClick={handleLogin}
+          type="submit"
+          colorScheme="blue"
+          size="lg"
+          fontSize="md"
+        >
           Entrar
         </Button>
       </Stack>

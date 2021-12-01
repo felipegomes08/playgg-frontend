@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom';
 //import Copa from "./../assets/img/cup.png"//
 import {
   Flex,
@@ -12,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Logo from "./../assets/img/logo.png";
 export default function Index() {
+  const history = useHistory();
   const [campeonatos, setCampeonatos] = useState<any>([]);
 
   useEffect(() => {

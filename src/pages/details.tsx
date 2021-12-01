@@ -55,9 +55,16 @@ export default function details() {
           <Link color="white" href="/Campeonatos">
             Campeonatos
           </Link>
-          <Button bg="purple" color="white" onClick={() => {}}>
-            Seja um jogador
-          </Button>
+          <Link href="/teams" textDecoration="none">
+            <Button bg="blue" color="white">
+              Monte sua equipe
+            </Button>
+          </Link>
+          <Link href="/Cadastro" textDecoration="none">
+            <Button bg="purple" color="white">
+              Seja um jogador
+            </Button>
+          </Link>
         </Flex>
       </Flex>
       <Flex mt="10" width="80%" height="100%" justify="center" align="center" justifySelf="center" alignSelf="center">
